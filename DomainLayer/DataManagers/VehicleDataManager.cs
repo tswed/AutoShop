@@ -13,7 +13,7 @@ namespace DomainLayer.DataManagers
             _context = context;
         }
 
-        public Vehicle CreateNewVehicle(VehicleForCreate vehicleToCreate)
+        public async Task<Vehicle> CreateNewVehicleAsync(VehicleForCreate vehicleToCreate)
         {
             var vehicleEntity = new VehicleEF
             {
@@ -30,8 +30,8 @@ namespace DomainLayer.DataManagers
             };
             
             _context.Vehicles.Add(vehicleEntity);
-            _context.SaveChanges();
-            
+            await _context.SaveChangesAsync();
+
             return MapToDto(vehicleEntity);
         }
         

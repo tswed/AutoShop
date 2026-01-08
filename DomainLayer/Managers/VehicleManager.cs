@@ -11,9 +11,9 @@ namespace DomainLayer.Managers
             _vehicleDataManager = vehicleDataManager;
         }
 
-        public Vehicle CreateNewVehicle(VehicleForCreate vehicleToCreate)
+        public async Task<Vehicle> CreateNewVehicleAsync(VehicleForCreate vehicleToCreate)
         {
-            return _vehicleDataManager.CreateNewVehicle(vehicleToCreate);
+            return await _vehicleDataManager.CreateNewVehicleAsync(vehicleToCreate);
         }
     }
 }
